@@ -7,6 +7,7 @@
 
 body {
     background-color: #0f172a;
+    overflow: hidden;
 }
 
 h1{
@@ -16,7 +17,7 @@ h1{
 }
 
 #container {
-    margin: 280px auto;
+    margin: 200px auto;
     background-color: #020617;
     align-items: center;
     justify-items: center;
@@ -66,4 +67,17 @@ input[type="number"] {
 
 #submit:hover {
     transform: scale(1.2);
+}
+
+@media (max-width:800px) {
+    #container {
+        flex: 2 1 1;
+        height: 350px;
+        width: 60%;
+    }
+
+    input {
+        width: 70%;
+        height: 35px; 
+    };
 }
