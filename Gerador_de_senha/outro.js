@@ -1,40 +1,30 @@
-const letras = document.querySelector(".letras"); 
 const size = document.querySelector(".size"); 
 const submit = document.getElementById("submit");
 
+const arrayDeCaracteres = [
+    "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
+    "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
+    "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+    "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "[", "]", "{", "}", "|", ";", ":", "'", ",", ".", "/", "<", ">", "?"
+];
 
 
 submit.addEventListener("click", event => { 
     event.preventDefault()
-
-    if(letras.value.trim() !== "") {
-        const valueLetter = letras.value;
-        // const valueSize = parseInt(size.value);
-
+    
+    if(size.value !== "") {
         function add() { 
-            const arrayValue = valueLetter.split(",").map(item => item.trim()).filter(item => item !== "");
-            console.log(arrayValue); 
+           return arrayDeCaracteres.sort( (a,b) => Math.random() - 0.5); 
+
+        //    Falta adicionar o limite que o user inserir
+        }
+
+        const result = add().join(",").trim().replace(/,/g, "");; 
+        console.log(result);
 
 
 
-            // Corrigir essa função pois está dando errado
-            function embaralharArray(array) {
-                let oldElement;
-                for (let i = array.length - 1; i > 0; i--) {
-                    let rand = Math.floor(Math.random() * (i + 1));
-                    oldElement = array[i];
-                    array[i] = array[rand];
-                    array[rand] = oldElement;
-                }
-                    return array;
-            };
-                const result =  embaralharArray(arrayValue);   
-                const resultArray = result.join(",").replace(/\s+/g, ""); 
-                console.log(resultArray);  
-        };
-
-        add();
-    } else {
+    }else {
         console.error("ERRO"); 
         alert("Por favor preencha os campos corretamente");
     }
