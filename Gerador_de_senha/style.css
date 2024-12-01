@@ -71,3 +71,9 @@ input[type="number"] {
         height: 35px; 
     };
 }
+
+.finalResult {
+    color: #f0f0f0;
+    font-size: 18px;
+    margin-top: 50px;
+}

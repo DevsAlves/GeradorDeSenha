@@ -1,5 +1,6 @@
 const size = document.querySelector(".size"); 
 const submit = document.getElementById("submit");
+const resultado = document.querySelector("finalResult");
 
 const arrayDeCaracteres = [
     "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
@@ -13,22 +14,28 @@ submit.addEventListener("click", event => {
     event.preventDefault()
     
     if(size.value !== "") {
-        function add() { 
-           return arrayDeCaracteres.sort( (a,b) => Math.random() - 0.5); 
+        const limit = parseInt(size.value);
 
-        //    Falta adicionar o limite que o user inserir
+        if ( limit > 18) {
+            alert("Passou do limite");
+        }else{
+            function generate() {  
+                let pass = ""; 
+                for(i = 0; i < limit ; i++) {
+                   const randomIndex = Math.floor(Math.random() * arrayDeCaracteres.length) ;
+                   pass += arrayDeCaracteres[randomIndex]; 
+                }
+                return pass; 
+            }
+            generate(); 
+
+            // Retornar a senha
+            
+
         }
-
-        const result = add().join(",").trim().replace(/,/g, "");; 
-        console.log(result);
-
-
 
     }else {
         console.error("ERRO"); 
         alert("Por favor preencha os campos corretamente");
     }
 });
-
-
-// O que faz o trim() -> remove os espaços brancos no ínicio e no fim  de uma string 
