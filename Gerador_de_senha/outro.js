@@ -1,6 +1,8 @@
 const size = document.querySelector(".size"); 
 const submit = document.getElementById("submit");
-const resultado = document.querySelector("finalResult");
+const resultado = document.querySelector(".finalResult");
+const other = document.getElementById("otherPass"); 
+const copy = document.getElementById("copy");
 
 const arrayDeCaracteres = [
     "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
@@ -12,7 +14,7 @@ const arrayDeCaracteres = [
 
 submit.addEventListener("click", event => { 
     event.preventDefault()
-    
+
     if(size.value !== "") {
         const limit = parseInt(size.value);
 
@@ -26,12 +28,28 @@ submit.addEventListener("click", event => {
                    pass += arrayDeCaracteres[randomIndex]; 
                 }
                 return pass; 
-            }
-            generate(); 
+            };
 
-            // Retornar a senha
+
+            const passGenerate = generate(); 
+            resultado.innerHTML = `<p> ${passGenerate} </p>`;
+            resultado.style.display = "block";
+
+
+            size.style.display = "none";
+            submit.style.display = "none";
+            other.style.display = "block";
+
+
+            copy.style.display = "block"; 
             
+            // Parte do user copiar
+            copy.addEventListener("click", () => {
+                navigator.clipboard.writeText(passGenerate);
+                alert(`Texto copiado: ${passGenerate}`);
+            });
 
+            size.value = ""; 
         }
 
     }else {
