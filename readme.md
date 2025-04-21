@@ -1,5 +1,4 @@
-# STARS BIO 
-
+# Gerador de Senha 
 <div style= "margin-top: 8px">
   <img src="img/project.png" alt="Imagem do projeto">
 </div>
